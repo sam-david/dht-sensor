@@ -24,7 +24,7 @@ def current_time():
     return pst_date
 
 def celsius_to_fahrenheit(degrees):
-    round((9.0/5.0) * degrees + 32, 2)
+    return round((9.0/5.0) * degrees + 32, 2)
 
 
 sensor_data = read_sensor()
