@@ -10,7 +10,7 @@ pin = 4
 
 def read_sensor():
     humidity, temp = Adafruit_DHT.read_retry(sensor, pin)
-    return { 'humidity': humidity, 'temp': temp }
+    return { 'humidity': round(humidity, 2), 'temp': temp }
 
 def write_to_csv(humidity, temp):
     fields = [humidity, celsius_to_fahrenheit(temp), current_time()]
@@ -24,7 +24,7 @@ def current_time():
     return pst_date
 
 def celsius_to_fahrenheit(degrees):
-    (9.0/5.0) * degrees + 32
+    round((9.0/5.0) * degrees + 32, 2)
 
 
 sensor_data = read_sensor()
