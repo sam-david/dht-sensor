@@ -13,7 +13,7 @@ def read_sensor():
     return { 'humidity': humidity, 'temp': temp }
 
 def write_to_csv(humidity, temp):
-    fields = [humidity, temp, current_time()]
+    fields = [humidity, celsius_to_fahrenheit(temp), current_time()]
     with open('tempHumidityStats.csv','a') as fd:
         writer = csv.writer(fd)
         writer.writerow(fields)
@@ -22,6 +22,9 @@ def current_time():
     date = datetime.datetime.now(tz=pytz.utc)
     pst_date = date.astimezone(timezone('US/Pacific'))
     return pst_date
+
+def celsius_to_fahrenheit(degrees):
+    (9.0/5.0) * degrees + 32
 
 
 sensor_data = read_sensor()
