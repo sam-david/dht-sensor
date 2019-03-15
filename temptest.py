@@ -15,7 +15,8 @@ def read_sensor():
 def write_to_csv(humidy, temp):
     fields = [humidty, temp, current_time()]
     with open('tempHumidityStats.csv','a') as fd:
-        fd.write(['Test', "tw"])
+        writer = csv.writer(fd)
+        writer.writerow(fields)
 
 def current_time():
     date = datetime.datetime.now(tz=pytz.utc)
