@@ -9,11 +9,11 @@ sensor = Adafruit_DHT.DHT22
 pin = 4
 
 def read_sensor():
-    humidty, temp = Adafruit_DHT.read_retry(sensor, pin)
-    return { 'humidty': humidty, 'temp': temp }
+    humidity, temp = Adafruit_DHT.read_retry(sensor, pin)
+    return { 'humidity': humidity, 'temp': temp }
 
-def write_to_csv(humidy, temp):
-    fields = [humidty, temp, current_time()]
+def write_to_csv(humidity, temp):
+    fields = [humidity, temp, current_time()]
     with open('tempHumidityStats.csv','a') as fd:
         writer = csv.writer(fd)
         writer.writerow(fields)
@@ -25,4 +25,4 @@ def current_time():
 
 
 sensor_data = read_sensor()
-write_to_csv(sensor_data['humidty'], sensor_data['temp'])
+write_to_csv(sensor_data['humidity'], sensor_data['temp'])
